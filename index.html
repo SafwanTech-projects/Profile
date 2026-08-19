@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Safwan Sajid | AI-Native Finance & Strategy Expert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --text-primary: #f8f9fa;
+            --text-secondary: #a0a0b0;
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: rgba(0, 0, 0, 0.02);
+            --text-primary: #0a0a0c;
+            --text-secondary: #555566;
+            --accent: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.1);
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3 { font-weight: 600; letter-spacing: -0.02em; }
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+        h3 { font-size: 1.25rem; }
+        
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title span {
+            color: var(--accent); font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em;
+            display: block; margin-bottom: 0.5rem;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 6rem 0; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 10, 12, 0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); transition: var(--transition);
+        }
+        [data-theme="light"] nav { background: rgba(255, 255, 255, 0.8); }
+        
+        .nav-content {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 2rem; max-width: 1200px; margin: 0 auto;
+        }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--text-primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; 
+            font-weight: 500; transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .theme-toggle {
+            background: var(--bg-card); border: 1px solid var(--border);
+            color: var(--text-primary); width: 38px; height: 38px;
+            border-radius: 50%; cursor: pointer; display: flex; 
+            align-items: center; justify-content: center; transition: var(--transition);
+        }
+        .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 50%, var(--accent-glow) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-subtitle {
+            font-family: 'JetBrains Mono', monospace; color: var(--accent);
+            margin-bottom: 1rem; font-size: 1rem;
+        }
+        .hero h1 { margin-bottom: 1.5rem; }
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--accent), #a855f7);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-desc {
+            font-size: 1.15rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 2.5rem;
+        }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        
+        .btn {
+            padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 500;
+            text-decoration: none; transition: var(--transition); font-size: 0.95rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .btn-primary {
+            background: var(--accent); color: #fff;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+        .btn-secondary {
+            background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border);
+        }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* About */
+        .about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: 700; color: var(--accent); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Experience & Education Timeline */
+        .timeline { position: relative; padding-left: 2rem; border-left: 2px solid var(--border); }
+        .timeline-item { margin-bottom: 2.5rem; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -2.45rem; top: 0.5rem;
+            width: 12px; height: 12px; background: var(--accent); border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent); margin-bottom: 0.25rem; }
+        .timeline-role { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.25rem; }
+        .timeline-company { color: var(--text-secondary); font-weight: 500; margin-bottom: 0.75rem; }
+        .timeline-desc { color: var(--text-secondary); font-size: 0.95rem; }
+        .timeline-desc ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+        .timeline-desc li { margin-bottom: 0.4rem; }
+
+        /* Skills */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .skill-category {
+            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 2rem; border-radius: 12px; transition: var(--transition);
+        }
+        .skill-category:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .skill-category h3 { margin-bottom: 1rem; color: var(--accent); font-size: 1rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-tag {
+            background: var(--bg-secondary); padding: 0.4rem 0.8rem; border-radius: 6px;
+            font-size: 0.85rem; color: var(--text-secondary); border: 1px solid var(--border);
+        }
+
+        /* Projects */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden; transition: var(--transition);
+            display: flex; flex-direction: column;
+        }
+        .project-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .project-img {
+            height: 200px; background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+            display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--accent);
+        }
+        .project-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .project-content h3 { margin-bottom: 0.5rem; }
+        .project-content p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; flex: 1; }
+        .project-links { display: flex; gap: 1rem; margin-top: auto; }
+        .project-links a { color: var(--text-secondary); font-size: 0.9rem; text-decoration: none; transition: var(--transition); display: flex; align-items: center; gap: 0.3rem;}
+        .project-links a:hover { color: var(--accent); }
+
+        /* Contact */
+        .contact-wrapper {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; padding: 3rem; text-align: center;
+        }
+        .contact-wrapper p { color: var(--text-secondary); max-width: 500px; margin: 0 auto 2rem; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; }
+        .social-links a {
+            width: 45px; height: 45px; border-radius: 50%; background: var(--bg-secondary);
+            border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-size: 1.1rem;
+        }
+        .social-links a:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-3px); }
+
+        footer { padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.85rem; }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-primary); flex-direction: column; padding: 2rem; border-bottom: 1px solid var(--border); }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .projects-grid { grid-template-columns: 1fr; }
+            section { padding: 4rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">A. S. Sajid</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" id="themeToggle"><i class="fas fa-sun"></i></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <p class="hero-subtitle reveal">Hello, I'm</p>
+            <h1 class="reveal">Ahmed Safwan Sajid<br><span class="gradient-text">AI-Native Finance & Strategy Expert</span></h1>
+            <p class="hero-desc reveal">Specializing in strategic research, M&A, and management consulting. Adept at workflow automation and advanced financial modeling using Python and AI tools to translate complex data into actionable investment strategies.</p>
+            <div class="hero-buttons reveal">
+                <a href="#projects" class="btn btn-primary">View My Work <i class="fas fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title reveal">
+                <span>// 01. Background</span>
+                <h2>About Me</h2>
+            </div>
+            <div class="about-text reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>Results-driven MS Finance graduate with a strong foundation in mathematical finance and data science. I build financial models and analyze datasets in Python to implement asset-valuation strategies, bringing experience from corporate banking and academic equity research.</p>
+                <p>I translate complex metrics into actionable investment recommendations for institutional clients, leveraging advanced statistical analysis and AI-native workflows to communicate insights through clear, comprehensive reports.</p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3.78</div>
+                        <div class="stat-label">MS Finance GPA</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Finance Specializations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-title reveal">
+                <span>// 02. Career</span>
+                <h2>Professional Experience</h2>
+            </div>
+            <div class="timeline reveal">
+                
+                <!-- EDIT: Add or remove timeline-item blocks as needed -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2026 – Present</div>
+                    <div class="timeline-role">Strategic Research Analyst</div>
+                    <div class="timeline-company">May International Trade Services Ltd., Dhaka</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Analyze global macroeconomic trends to identify emerging high-margin bilateral trade corridors.</li>
+                            <li>Develop financial feasibility models, revenue projections, and pricing frameworks for new service lines.</li>
+                            <li>Convert raw trade data into visual, actionable strategy briefs for C-suite decision-making.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Mar 2026 – Jun 2026</div>
+                    <div class="timeline-role">Corporate Banking Intern</div>
+                    <div class="timeline-company">PRIME BANK PLC, Dhaka</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Mastered rigorous KYC protocols and regulatory documentation, ensuring 100% compliance with AML standards.</li>
+                            <li>Streamlined administrative workflows and account onboarding, improving efficiency during peak hours.</li>
+                            <li>Verified daily vouchers and transaction records for seamless end-of-day reconciliation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2022 – Feb 2024</div>
+                    <div class="timeline-role">Equity Research Analyst</div>
+                    <div class="timeline-company">INNOVA SECURITIES LTD., Dhaka</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Built and maintained DCF and relative-multiples valuation models projecting corporate earnings and stock-price targets.</li>
+                            <li>Authored institutional-grade research publications and market commentaries for HNW brokerage clients.</li>
+                            <li>Monitored macroeconomic indicators and BSEC regulatory frameworks to assess capital-market risk.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2021 – Dec 2021</div>
+                    <div class="timeline-role">Entry-Level Software Engineer</div>
+                    <div class="timeline-company">REVATURE, Reston, VA</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Built web-automation and scraping scripts in Python for efficient extraction and cleaning of financial data.</li>
+                            <li>Engineered relational data architectures and optimized SQL queries in PostgreSQL for high-volume environments.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2014 – Dec 2014</div>
+                    <div class="timeline-role">Undergraduate Research Assistant</div>
+                    <div class="timeline-company">C.T. Bauer College of Business, University of Houston</div>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Extracted executive background data from Bloomberg Terminal and SEC EDGAR to support empirical corporate innovation studies.</li>
+                            <li>Constructed large relational panel datasets in Excel under tight timelines for senior faculty research.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title reveal">
+                <span>// 03. Expertise</span>
+                <h2>Core Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <!-- EDIT: Update skill tags here -->
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-chart-line"></i> Finance & Strategy</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Financial Modeling</span>
+                        <span class="skill-tag">M&A</span>
+                        <span class="skill-tag">Investment Banking</span>
+                        <span class="skill-tag">Management Consulting</span>
+                        <span class="skill-tag">Valuations</span>
+                        <span class="skill-tag">Trend Forecasting</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-code"></i> Data & Programming</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">R Programming</span>
+                        <span class="skill-tag">SQL / PostgreSQL</span>
+                        <span class="skill-tag">Web Scraping</span>
+                        <span class="skill-tag">HTML/CSS/JS</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-robot"></i> Tools & AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Claude / Hermes Agent</span>
+                        <span class="skill-tag">Workflow Automation</span>
+                        <span class="skill-tag">Advanced Excel</span>
+                        <span class="skill-tag">Bloomberg Terminal</span>
+                        <span class="skill-tag">SEC EDGAR</span>
+                        <span class="skill-tag">STATA / MATLAB</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-users"></i> Research & Leadership</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Strategic Research</span>
+                        <span class="skill-tag">Econometric Modeling</span>
+                        <span class="skill-tag">Executive Communication</span>
+                        <span class="skill-tag">Team Leadership</span>
+                        <span class="skill-tag">Market Research</span>
+                        <span class="skill-tag">Project Planning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-title reveal">
+                <span>// 04. Academic Journey</span>
+                <h2>Education & Certifications</h2>
+            </div>
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2025</div>
+                    <div class="timeline-role">Master of Science, Finance</div>
+                    <div class="timeline-company">University of Houston, Houston, TX</div>
+                    <div class="timeline-desc">GPA: 3.78/4.00 • Dean's List • Bauer Academic Excellence Scholarship (2023–2024)</div>
+                    <div class="timeline-desc">Coursework: Financial Modeling, Valuations, Corporate Finance, Investment Banking & Private Equity, Valuations, M&A</div>
+
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2018</div>
+                    <div class="timeline-role">Bachelor of Science, Economics (Minor: Finance)</div>
+                    <div class="timeline-company">University of Houston, Houston, TX</div>
+                    <div class="timeline-desc">GPA: 3.60/4.00 • Member, UH Economic Society </div>
+                    <div class="timeline-desc"> Coursework: Econometrics, Microeconomics, Macroeconomics, Regression Analysis </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2018</div>
+                    <div class="timeline-role">Bachelor of Science, Mathematics(Concentration: Mathematical Finance)</div>
+                    <div class="timeline-company">University of Houston, Houston, TX</div>
+                    <div class="timeline-desc">GPA: 3.23/4.00 • Member, Society of Industrial and Applied Mathematics (SIAM) </div>
+                    <div class="timeline-desc"> Coursework: Multivariable Calculus, Linear Algebra, Probability, Statistics </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Finance Certifications</div>
+                    <div class="timeline-role">C.T Bauer College Certifications</div>
+                    <div class="timeline-company">Professional Development</div>
+                    <div class="timeline-desc">Corporate Finance • Private Equity & Investment Banking • Energy Investment Analysis</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title reveal">
+                <span>// 05. Portfolio</span>
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- EDIT: Update project details and links -->
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-chart-pie"></i></div>
+                    <div class="project-content">
+                        <h3>Bangladesh District Investment Attractiveness Analysis</h3>
+                        <p>Developed a comprehensive analysis of investment attractiveness across districts in Bangladesh, utilizing economic and financial data to inform policy recommendations.</p>
+                        <div class="project-links">
+                            <a href="https://safwantech-projects.github.io/BDIAI_Repo/" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-building"></i></div>
+                    <div class="project-content">
+                        <h3>Bangladesh Best District-Industry Investment Opportunities</h3>
+                        <p>Identified and analyzed the most promising investment opportunities at the intersection of districts and industries in Bangladesh, providing actionable insights for stakeholders.</p>
+                        <div class="project-links">
+                            <a href="https://safwantech-projects.github.io/BDIIO_Repo/" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-img"><i class="fas fa-database"></i></div>
+                    <div class="project-content">
+                        <h3>Published Research Reports</h3>
+                        <p>Research reports based on client needs and market analysis.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/SafwanTech-projects/Research-Reports" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="contact-wrapper reveal">
+                <div class="section-title" style="margin-bottom: 1rem;">
+                    <span>// 06. Connect</span>
+                    <h2>Let's Work Together</h2>
+                </div>
+                <p>I am currently open to collaborations, research positions, and industry opportunities in finance, strategy, and data. Feel free to reach out.</p>
+                <a href="mailto:safwansajid@gmail.com" class="btn btn-primary">Say Hello <i class="fas fa-paper-plane"></i></a>
+                <a href="mailto:asafsaj@gmail.com" class="btn btn-secondary">Email Me <i class="fas fa-envelope"></i></a>
+                
+                <!-- EDIT: Update your social/profile links below -->
+                <div class="social-links">
+                    <a href="https://github.com/SafwanTech-projects" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ahmed-sajid-14ab9a81/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/ASafSaj" target="_blank" title="X"><i class="fas fa-bolt"></i></a>
+                    <a href="https://www.facebook.com/ahmed.s.sajid" target="_blank" title="Facebook"><i class="fab fa-instagram"></i></a>
+                    <a href="tel:+17134297961" title="Phone"><i class="fas fa-phone"></i></a>
+                    <a href="tel:+8801302740582" title="Phone"><i class="fas fa-phone"></i></a>
+                    a
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Designed & Built by Ahmed Safwan Sajid &copy; <script>document.write(new Date().getFullYear())</script></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const icon = themeToggle.querySelector('i');
+
+        const setTheme = (theme) => {
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        };
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll Reveal Animation
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
